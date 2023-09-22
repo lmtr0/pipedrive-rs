@@ -1,0 +1,19 @@
+[package]
+name = "pipedrive-rs"
+version = "1.0.0"
+authors = ["lmtr0 <lmtr0@proton.me>"]
+description = "Rust PipedriveClient"
+# Override this license by providing a License Object in the OpenAPI.
+license = "Unlicense"
+edition = "2021"
+
+[dependencies]
+serde = "^1.0"
+serde_derive = "^1.0"
+serde_with = "3.0.0"
+serde_json = "^1.0"
+url = "^2.2"
+uuid = { version = "^1.0", features = ["serde", "v4"] }
+[dependencies.reqwest]
+version = "^0.11"
+features = ["json", "multipart"]
