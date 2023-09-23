@@ -3,6 +3,10 @@ name = "pipedrive-rs"
 version = "0.0.1"
 authors = ["lmtr0 <lmtr0@proton.me>"]
 description = "Rust PipedriveClient"
+
+documentation = "https://github.com/lmtr0/pipedrive-rs/blob/main/generated_api.md"
+repository = "https://github.com/lmtr0/pipedrive-rs/"
+homepage = "https://github.com/lmtr0/pipedrive-rs/"
 # Override this license by providing a License Object in the OpenAPI.
 license = "Apache-2.0"
 edition = "2021"
