@@ -6,8 +6,8 @@ extern crate serde;
 extern crate serde_json;
 extern crate url;
 
-#[allow(clippy::all)]
+#[allow(clippy::all, unused)]
 pub mod apis;
 pub mod auth;
-#[allow(clippy::all)]
+#[allow(clippy::all, unused)]
 pub mod models;
