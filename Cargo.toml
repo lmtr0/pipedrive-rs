@@ -1,6 +1,6 @@
 [package]
 name = "pipedrive-rs"
-version = "0.0.2"
+version = "0.1.0"
 authors = ["lmtr0 <lmtr0@proton.me>"]
 description = "Rust PipedriveClient"
 
