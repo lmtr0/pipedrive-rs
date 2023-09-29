@@ -9,6 +9,7 @@ use pipedrive_rs::{
     auth::{
         autorize_code,
         get_request_auth_url,
+        refresh_token,
         //refresh_token
     },
 };
@@ -39,8 +40,20 @@ async fn main() -> Result<()> {
 
     println!("Code is {code:?}");
 
-    let tokens = autorize_code(client_id, client_secret, redirect_url, &code).await?;
-    // let tokens = refresh_token(client_id, client_secret, tokens).await?;
+    let first_tokens = autorize_code(client_id, client_secret, redirect_url, &code).await?;
+    let tokens = refresh_token(client_id, client_secret, &first_tokens.refresh_token).await?;
+
+    if tokens.access_token == first_tokens.access_token {
+        println!("ACCESS_TOKEN is the same");
+    } else {
+        println!("ACCESS_TOKEN changed");
+    }
+
+    if tokens.refresh_token == first_tokens.refresh_token {
+        println!("REFRESH_TOKEN is the same");
+    } else {
+        println!("REFRESH_TOKEN changed");
+    }
 
     println!("Hello world");
 

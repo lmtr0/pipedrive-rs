@@ -4,7 +4,7 @@ use anyhow::Result;
 use base64::Engine;
 use url::{ParseError, Url};
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
 /// Based on https://pipedrive.readme.io/docs/marketplace-oauth-authorization
 pub struct AuthorizationTokens {
     pub access_token: String,
@@ -97,7 +97,8 @@ pub async fn autorize_code(
 pub async fn refresh_token(
     client_id: &str,
     client_secret: &str,
-    token: AuthorizationTokens,
+
+    refresh_token: &str,
 ) -> Result<AuthorizationTokens> {
     use reqwest::header::{HeaderMap, HeaderValue};
 
@@ -115,7 +116,7 @@ pub async fn refresh_token(
     // parameters
     let form = HashMap::from([
         ("grant_type", "refresh_token"),
-        ("refresh_token", &token.refresh_token),
+        ("refresh_token", refresh_token),
     ]);
 
     let client = reqwest::ClientBuilder::new()
